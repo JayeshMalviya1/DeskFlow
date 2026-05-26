@@ -30,7 +30,7 @@ Open [http://localhost:5173](http://localhost:5173).
 
 | Variable | Description |
 |----------|-------------|
-| `VITE_API_URL` | Backend base URL, e.g. `http://localhost:5000` |
+| `VITE_API_URL` | Backend base URL — production: `https://deskflow-6.onrender.com` |
 
 ## Project structure (phase 1)
 

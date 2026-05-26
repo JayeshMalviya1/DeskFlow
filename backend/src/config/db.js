@@ -1,25 +1,29 @@
 import mongoose from 'mongoose';
 
 /**
- * Connects to MongoDB Atlas using the URI from environment variables.
- * Exits the process on failure so the server does not run without a database.
+ * Connects to MongoDB Atlas using MONGODB_URI from environment variables.
+ * Throws on failure so server.js can log a clear message before exit.
  */
 export const connectDB = async () => {
   const uri = process.env.MONGODB_URI;
 
   if (!uri) {
-    console.error('MONGODB_URI is not defined in environment variables');
-    process.exit(1);
+    throw new Error(
+      'MONGODB_URI is not set. Add it in Render → Environment (or backend/.env locally).'
+    );
   }
 
-  try {
-    const conn = await mongoose.connect(uri);
-
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`MongoDB connection error: ${error.message}`);
-    process.exit(1);
+  if (uri.includes('<') || uri.includes('PASSWORD') || uri.includes('username')) {
+    throw new Error(
+      'MONGODB_URI looks like a placeholder. Use your real Atlas connection string.'
+    );
   }
+
+  const conn = await mongoose.connect(uri, {
+    serverSelectionTimeoutMS: 15000,
+  });
+
+  console.log(`MongoDB connected: ${conn.connection.host}`);
 };
 
 /**

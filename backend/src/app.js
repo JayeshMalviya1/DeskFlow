@@ -20,6 +20,16 @@ app.get('/health', (_req, res) => {
   });
 });
 
+app.get('/', (_req, res) => {
+  res.status(200).json({
+    success: true,
+    data: {
+      name: 'DeskFlow API',
+      docs: 'Use /health and /tickets — the React UI is deployed separately on Vercel.',
+    },
+  });
+});
+
 app.use('/tickets', ticketRoutes);
 
 app.use(notFoundHandler);

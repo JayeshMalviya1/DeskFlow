@@ -30,5 +30,8 @@ const startServer = async () => {
 
 startServer().catch((error) => {
   console.error('Failed to start server:', error.message);
+  console.error(
+    'Render checklist: set MONGODB_URI in Environment, Atlas Network Access 0.0.0.0/0, correct password in URI.'
+  );
   process.exit(1);
 });
