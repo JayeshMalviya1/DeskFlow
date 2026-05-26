@@ -1,0 +1,45 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.filters-select {
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--text-primary);
+  min-width: 160px;
+}
+
+.filters-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+}
+
+.filters-breached {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.filters-breached--active .filters-breached-text {
+  color: var(--sla-breach);
+  font-weight: 600;
+}
+
+.filters-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--sla-breach);
+}

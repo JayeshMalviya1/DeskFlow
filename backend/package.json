@@ -1,0 +1,30 @@
+{
+  "name": "deskflow-backend",
+  "version": "1.0.0",
+  "description": "Support ticket triage API with status transitions and SLA tracking",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "support-tickets",
+    "sla"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "joi": "^17.13.3",
+    "mongoose": "^8.9.3"
+  }
+}

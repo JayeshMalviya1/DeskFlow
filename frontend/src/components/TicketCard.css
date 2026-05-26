@@ -1,0 +1,235 @@
+.ticket-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 12px 12px 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+  touch-action: none;
+  cursor: grab;
+}
+
+.ticket-card:active {
+  cursor: grabbing;
+}
+
+.ticket-card-body {
+  pointer-events: none;
+  user-select: none;
+}
+
+.ticket-card .ticket-actions,
+.ticket-card .ticket-delete {
+  cursor: default;
+  pointer-events: auto;
+}
+
+.ticket-card--dragging {
+  opacity: 0.4;
+  box-shadow: none;
+  cursor: grabbing;
+}
+
+.ticket-card--overlay {
+  width: 280px;
+  cursor: grabbing;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  transform: rotate(1.5deg);
+  border-color: var(--accent);
+}
+
+.ticket-meta-preview {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ticket-card-error {
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sla-breach);
+  background: #fef2f2;
+  border-radius: var(--radius-control);
+  border: 1px solid #fecaca;
+}
+
+.ticket-card--shake {
+  animation: card-shake 0.45s ease;
+}
+
+@keyframes card-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-4px);
+  }
+  40%,
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.ticket-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-card--breached {
+  border-color: #fecaca;
+}
+
+.ticket-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ticket-subject {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  flex: 1;
+}
+
+.ticket-badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.badge--urgent {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.badge--high {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.badge--medium {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.badge--low {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.ticket-email {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.ticket-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.ticket-age {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ticket-age-icon {
+  margin-right: 4px;
+}
+
+.ticket-sla {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sla-breach);
+  background: #fee2e2;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.ticket-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.ticket-move {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.ticket-move--forward {
+  border-color: #d1d5db;
+  font-weight: 500;
+}
+
+.ticket-move:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.ticket-move:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ticket-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ticket-delete {
+  margin-top: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--sla-breach);
+  cursor: pointer;
+}
+
+.ticket-delete:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.ticket-delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

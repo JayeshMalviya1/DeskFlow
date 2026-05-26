@@ -1,0 +1,63 @@
+.board-hint {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.board-hint-mark {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.board-error {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-card);
+  color: var(--sla-breach);
+  font-size: 14px;
+}
+
+.board-error p {
+  margin: 0 0 12px;
+}
+
+.board-retry {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid var(--sla-breach);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--sla-breach);
+  cursor: pointer;
+}
+
+.board-retry:hover {
+  background: #fee2e2;
+}
+
+@media (max-width: 1200px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
