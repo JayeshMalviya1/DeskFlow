@@ -1,0 +1,14 @@
+{
+  "name": "deskflow",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DeskFlow monorepo — Render can use repo root with these scripts",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "npm install --prefix backend",
+    "start": "npm start --prefix backend",
+    "dev": "npm run build"
+  }
+}

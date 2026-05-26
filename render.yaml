@@ -1,0 +1,23 @@
+# Render Blueprint — DeskFlow backend API
+# Dashboard: New > Blueprint > connect this repo, or set these values manually on a Web Service.
+#
+# Manual Web Service settings:
+#   Root Directory: backend
+#   Build Command:  npm install
+#   Start Command:  npm start
+
+services:
+  - type: web
+    name: deskflow-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: PORT
+        value: 10000
