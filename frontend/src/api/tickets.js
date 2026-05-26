@@ -1,25 +1,42 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/apiBase.js';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: API_BASE_URL,
   headers: { 'Content-Type': 'application/json' },
+  timeout: 60000,
 });
 
 const unwrap = (response) => {
   const { data } = response;
+
   if (!data?.success) {
-    throw new Error(data?.message || 'Request failed');
+    throw new Error(data?.message || 'Unexpected API response');
   }
+
   return data.data;
 };
 
 const toError = (error) => {
-  throw new Error(error.response?.data?.message || error.message || 'Request failed');
+  if (error.code === 'ECONNABORTED') {
+    throw new Error(
+      `API timed out (${API_BASE_URL}). Render free tier may be waking up — wait 30s and retry.`
+    );
+  }
+
+  if (error.response?.data?.message) {
+    throw new Error(error.response.data.message);
+  }
+
+  if (error.request && !error.response) {
+    throw new Error(
+      `Cannot reach API at ${API_BASE_URL}. Check Vercel env VITE_API_URL and that Render is running.`
+    );
+  }
+
+  throw new Error(error.message || 'Request failed');
 };
 
-/**
- * GET /tickets — filters: status, priority, breached (boolean → breached=true)
- */
 export async function getTickets({ status, priority, breached } = {}) {
   try {
     const params = {};

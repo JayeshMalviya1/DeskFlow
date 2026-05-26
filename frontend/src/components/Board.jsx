@@ -10,6 +10,7 @@ import {
 import Column from './Column.jsx';
 import TicketCardPreview from './TicketCardPreview.jsx';
 import { isValidTransition } from '../utils/transitions.js';
+import { API_BASE_URL } from '../config/apiBase.js';
 import './Board.css';
 
 const COLUMNS = [
@@ -42,7 +43,10 @@ function Board({
   if (error) {
     return (
       <div className="board-error" role="alert">
-        <p>Failed to load tickets. {error}</p>
+        <p>
+          Failed to load tickets. {error}
+        </p>
+        <p className="board-error-api">API: {API_BASE_URL}</p>
         <button type="button" className="board-retry" onClick={onRetry}>
           Retry
         </button>
