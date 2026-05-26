@@ -9,6 +9,6 @@
   "scripts": {
     "build": "npm install --prefix backend",
     "start": "npm start --prefix backend",
-    "dev": "npm run build"
+    "dev": "npm start --prefix backend"
   }
 }
